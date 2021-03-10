@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+  schedule:
+    - cron: '0 0 * * *'
+
+env:
+  GIT_COMMIT_SHA: ${{ github.sha }}
+  GIT_BRANCH: ${{ github.ref }}
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Set up Ruby 3.0
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 3.0.X
+          bundler-cache: true
+
+      - name: Standard
+        run: |
+          bundle exec standardrb
+  build:
+    needs: [linting]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: ['2.5', '2.6', '2.7']
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Set up Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      - name: Test
+        run: |
+          bundle exec rake
