@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "net/http/persistent"
+
 module Faraday
   class Adapter
     # Net::HTTP::Persistent adapter.
