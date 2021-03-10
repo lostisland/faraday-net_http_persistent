@@ -19,13 +19,14 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Set up Ruby 3.0
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0.X
           bundler-cache: true
 
       - name: Standard
         run: |
+          gem install standardrb
           bundle exec standardrb
   build:
     needs: [linting]
@@ -38,7 +39,7 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Set up Ruby
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
