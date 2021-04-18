@@ -7,7 +7,7 @@ This gem is a [Faraday][faraday] adapter for the [Net::HTTP::Persistent gem][net
 
 ## Installation
 
-Add this lines to your application's Gemfile:
+Add these lines to your application's Gemfile:
 
 ```ruby
 gem 'faraday-net_http_persistent'
