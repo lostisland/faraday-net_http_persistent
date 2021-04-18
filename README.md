@@ -18,7 +18,7 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
+Or install them yourself as:
 
     $ gem install net_http_persistent -v '>= 3.1'
     $ gem install faraday-net_http_persistent
