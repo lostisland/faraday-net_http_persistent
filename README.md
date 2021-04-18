@@ -7,10 +7,11 @@ This gem is a [Faraday][faraday] adapter for the [Net::HTTP::Persistent gem][net
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this lines to your application's Gemfile:
 
 ```ruby
 gem 'faraday-net_http_persistent'
+gem 'net-http-persistent', '>= 3.1'
 ```
 
 And then execute:
@@ -19,6 +20,7 @@ And then execute:
 
 Or install it yourself as:
 
+    $ gem install net_http_persistent -v '>= 3.1'
     $ gem install faraday-net_http_persistent
 
 ## Usage
