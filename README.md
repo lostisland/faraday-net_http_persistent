@@ -64,7 +64,7 @@ This project is intended to be a safe, welcoming space for collaboration.
 Everyone interacting in the Faraday::Http project’s codebases, issue trackers,
 chat rooms and mailing lists is expected to follow the [code of conduct].
 
-[code-of-conduct]:     https://github.com/lostisland/faraday-http/blob/master/.github/CODE_OF_CONDUCT.md
+[code-of-conduct]:     https://github.com/lostisland/faraday-http/blob/main/CODE_OF_CONDUCT.md
 [covenant]:            http://contributor-covenant.org
 [faraday]:             https://github.com/lostisland/faraday
 [faraday-website]:     https://lostisland.github.io/faraday
