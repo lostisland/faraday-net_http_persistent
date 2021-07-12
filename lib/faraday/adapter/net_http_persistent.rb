@@ -50,7 +50,26 @@ module Faraday
       end
 
       def perform_request(http, env)
-        http.request env[:url], create_request(env)
+        if env[:request].stream_response?
+          size = 0
+          yielded = false
+
+          http_response = http.request(env[:url], create_request(env)) do |response|
+            response.read_body do |chunk|
+              if chunk.bytesize.positive? || size.positive?
+                yielded = true
+                size += chunk.bytesize
+                env[:request].on_data.call(chunk, size)
+              end
+            end
+          end
+
+          env[:request].on_data.call(+"", 0) unless yielded
+          http_response.body = nil
+          http_response
+        else
+          http.request(env[:url], create_request(env))
+        end
       rescue Errno::ETIMEDOUT, Net::OpenTimeout => e
         raise Faraday::TimeoutError, e
       rescue Net::HTTP::Persistent::Error => e
