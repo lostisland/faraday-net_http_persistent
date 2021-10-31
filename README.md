@@ -5,27 +5,31 @@
 
 This gem is a [Faraday][faraday] adapter for the [Net::HTTP::Persistent gem][net-http-persistent].
 
+---
+
+:warning: **This README is for the `main` branch that uses Faraday 2.0, which is not yet released.**
+
+For 1.0-compatible documentation, refer to [v1.2.0 of the README](https://github.com/lostisland/faraday-net_http_persistent/blob/v1.2.0/README.md).
+
+---
+
 ## Installation
 
-Add these lines to your application's Gemfile:
+Add this to your application's Gemfile:
 
 ```ruby
-gem 'faraday-net_http_persistent'
-gem 'net-http-persistent', '>= 3.1'
+gem 'faraday-net_http_persistent',
+    git: 'https://github.com/lostisland/faraday-net_http_persistent',
+    branch: 'main'
 ```
 
 And then execute:
 
     $ bundle
 
-Or install them yourself as:
-
-    $ gem install net_http_persistent -v '>= 3.1'
-    $ gem install faraday-net_http_persistent
-
 ## Usage
 
-Configure your Faraday connection to use this adapter instead of the default one:
+Configure your Faraday connection to use the `net_http_persistent` adapter:
 
 ```ruby
 connection = Faraday.new(url, conn_options) do |conn|

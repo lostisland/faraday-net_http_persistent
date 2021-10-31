@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
+require "faraday/net_http"
+require "net/http/persistent"
+
 module Faraday
   class Adapter
     # Net::HTTP::Persistent adapter.
     class NetHttpPersistent < NetHttp
-      dependency "net/http/persistent"
-
       private
 
       def net_http_connection(env)
