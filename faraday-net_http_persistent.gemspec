@@ -17,21 +17,11 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/lostisland/faraday-net_http_persistent"
-  spec.metadata["changelog_uri"] = "https://github.com/lostisland/faraday-net_http_persistent"
+  spec.metadata["changelog_uri"] = "https://github.com/lostisland/faraday-net_http_persistent/releases/tag/v#{spec.version}"
 
   spec.files = Dir.glob("lib/**/*") + %w[README.md LICENSE.md]
   spec.require_paths = ["lib"]
 
-  # TODO: make this a normal dependency when releasing v2.0
-  spec.add_development_dependency "net-http-persistent", ">= 3.1"
-
-  spec.add_development_dependency "bundler", "~> 2.0"
-  spec.add_development_dependency "faraday", "~> 1.0"
-  spec.add_development_dependency "rake", "~> 13.0"
-  spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "simplecov", "~> 0.19.0"
-  spec.add_development_dependency "standardrb", "~> 1.0"
-
-  spec.add_development_dependency "multipart-parser", "~> 0.1.1"
-  spec.add_development_dependency "webmock", "~> 3.4"
+  spec.add_dependency "faraday-net_http", "~> 2.0.0.alpha-1"
+  spec.add_dependency "net-http-persistent", "~> 4.0"
 end

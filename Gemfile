@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 source "https://rubygems.org"
-
-# TODO: remove this once v4 is released
-options = (RUBY_VERSION.start_with?("3") ? {github: "grosser/net-http-persistent", branch: "grosser/spec"} : {})
-gem "net-http-persistent", ">= 3.1", **options
-
 gemspec
+
+gem "bundler", "~> 2.0"
+gem "rake", "~> 13.0"
+gem "rspec", "~> 3.0"
+gem "simplecov", "~> 0.19.0"
+gem "standardrb", "~> 1.0"
+
+gem "multipart-parser", "~> 0.1.1"
+gem "webmock", "~> 3.4"

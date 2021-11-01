@@ -4,8 +4,6 @@ module Faraday
   class Adapter
     # Net::HTTP::Persistent adapter.
     class NetHttpPersistent < NetHttp
-      dependency "net/http/persistent"
-
       private
 
       def net_http_connection(env)

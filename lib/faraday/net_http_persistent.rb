@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "faraday/net_http"
+require "net/http/persistent"
 require_relative "adapter/net_http_persistent"
 require_relative "net_http_persistent/version"
 
