@@ -29,17 +29,14 @@ And then execute:
 
 ## Usage
 
-Configure your Faraday connection to use the `net_http_persistent` adapter:
-
 ```ruby
-connection = Faraday.new(url, conn_options) do |conn|
-  # Your other middleware goes here...
-  conn.adapter :net_http_persistent
+conn = Faraday.new(...) do |f|
+  f.adapter :net_http_persistent, pool_size: 5 do |http|
+    # yields Net::HTTP::Persistent
+    http.idle_timeout = 100
+  end
 end
 ```
-
-For more information on how to setup your Faraday connection and adapters usage,
-please refer to the [Faraday Website][faraday-website].
 
 ## Development
 
