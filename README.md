@@ -5,22 +5,12 @@
 
 This gem is a [Faraday][faraday] adapter for the [Net::HTTP::Persistent gem][net-http-persistent].
 
----
-
-:warning: **This README is for the `main` branch that uses Faraday 2.0, which is not yet released.**
-
-For 1.0-compatible documentation, refer to [v1.2.0 of the README](https://github.com/lostisland/faraday-net_http_persistent/blob/v1.2.0/README.md).
-
----
-
 ## Installation
 
 Add this to your application's Gemfile:
 
 ```ruby
-gem 'faraday-net_http_persistent',
-    git: 'https://github.com/lostisland/faraday-net_http_persistent',
-    branch: 'main'
+gem 'faraday-net_http_persistent', '~> 2.0'
 ```
 
 And then execute:
@@ -30,6 +20,8 @@ And then execute:
 ## Usage
 
 ```ruby
+require 'faraday/net_http_persistent'
+
 conn = Faraday.new(...) do |f|
   f.adapter :net_http_persistent, pool_size: 5 do |http|
     # yields Net::HTTP::Persistent
