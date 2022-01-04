@@ -14,18 +14,14 @@ module Faraday
           if Net::HTTP::Persistent.instance_method(:initialize)
               .parameters.first == %i[key name]
             options = {name: "Faraday"}
-            if @connection_options.key?(:pool_size)
-              options[:pool_size] = @connection_options[:pool_size]
-            end
+            options[:pool_size] = @connection_options[:pool_size] if @connection_options.key?(:pool_size)
             Net::HTTP::Persistent.new(**options)
           else
             Net::HTTP::Persistent.new("Faraday")
           end
 
         proxy_uri = proxy_uri(env)
-        if @cached_connection.proxy_uri != proxy_uri
-          @cached_connection.proxy = proxy_uri
-        end
+        @cached_connection.proxy = proxy_uri if @cached_connection.proxy_uri != proxy_uri
         @cached_connection
       end
 
@@ -76,9 +72,7 @@ module Faraday
       rescue Net::HTTP::Persistent::Error => e
         raise Faraday::TimeoutError, e if e.message.include? "Timeout"
 
-        if e.message.include? "connection refused"
-          raise Faraday::ConnectionFailed, e
-        end
+        raise Faraday::ConnectionFailed, e if e.message.include? "connection refused"
 
         raise
       end
