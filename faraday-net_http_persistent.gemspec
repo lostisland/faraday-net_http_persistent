@@ -22,6 +22,6 @@ Gem::Specification.new do |spec|
   spec.files = Dir.glob("lib/**/*") + %w[README.md LICENSE.md]
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "faraday-net_http"
+  spec.add_dependency "faraday-net_http", "< 3"
   spec.add_dependency "net-http-persistent", "~> 4.0"
 end
