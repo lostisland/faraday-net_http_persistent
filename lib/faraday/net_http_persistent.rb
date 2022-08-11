@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "adapter/net_http_persistent"
-require_relative "net_http_persistent/version"
+require "faraday"
+require "faraday/adapter/net_http_persistent"
+require "faraday/net_http_persistent/version"
 
 module Faraday
   module NetHttpPersistent

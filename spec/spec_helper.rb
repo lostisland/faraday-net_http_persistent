@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require "simplecov"
+SimpleCov.start
+
 require "faraday"
 require "faraday/net_http_persistent"
-# This is the magic bit. It requires a tests suite from the Faraday gem that you can run against your adapter
 require "faraday_specs_setup"
 
 RSpec.configure do |config|

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "lib/faraday/net_http_persistent/version"
+lib = File.expand_path("lib", __dir__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require "faraday/net_http_persistent/version"
 
 Gem::Specification.new do |spec|
   spec.name = "faraday-net_http_persistent"
@@ -22,6 +24,6 @@ Gem::Specification.new do |spec|
   spec.files = Dir.glob("lib/**/*") + %w[README.md LICENSE.md]
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "faraday-net_http", "< 3"
+  spec.add_dependency "faraday", "~> 2.5"
   spec.add_dependency "net-http-persistent", "~> 4.0"
 end
