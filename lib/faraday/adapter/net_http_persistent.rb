@@ -25,9 +25,7 @@ module Faraday
       ]
 
       exceptions << ::OpenSSL::SSL::SSLError if defined?(::OpenSSL::SSL::SSLError)
-      # TODO (breaking): Enable this to make it consistent with net_http adapter.
-      #   See https://github.com/lostisland/faraday/issues/718#issuecomment-344549382
-      # exceptions << ::Net::OpenTimeout if defined?(::Net::OpenTimeout)
+      exceptions << ::Net::OpenTimeout if defined?(::Net::OpenTimeout)
 
       NET_HTTP_EXCEPTIONS = exceptions.freeze
 
