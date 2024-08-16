@@ -26,8 +26,8 @@ jobs:
 
       - name: Standard
         run: |
-          gem install standardrb
-          bundle exec standardrb
+          gem install standardrb -v 1.37.0
+          standardrb
   build:
     needs: [linting]
     runs-on: ubuntu-latest
