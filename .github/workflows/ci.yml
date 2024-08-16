@@ -17,17 +17,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Ruby 2.7
+      - name: Set up Ruby 3.0
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: '3.0'
           bundler-cache: true
-
-      - name: Standard
-        run: |
-          gem install standardrb -v 1.37.0
-          standardrb
+      - run: bundle exec standardrb
   build:
     needs: [linting]
     runs-on: ubuntu-latest
