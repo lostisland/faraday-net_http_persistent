@@ -16,26 +16,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-
+      - uses: actions/checkout@v4
       - name: Set up Ruby 2.7
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
           bundler-cache: true
-
-      - name: Standard
-        run:
-          bundle exec standardrb
+      - run: bundle exec standardrb
   build:
     needs: [linting]
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby: ['2.6', '2.7', '3.0', '3.1', '3.2']
+        ruby: ['2.6', '2.7', '3.0', '3.1', '3.2', '3.3']
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -44,5 +40,4 @@ jobs:
           bundler-cache: true
 
       - name: Test
-        run: |
-          bundle exec rake
+        run: bundle exec rake
