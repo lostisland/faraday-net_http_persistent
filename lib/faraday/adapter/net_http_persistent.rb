@@ -31,9 +31,9 @@ module Faraday
 
       NET_HTTP_EXCEPTIONS = exceptions.freeze
 
-      def initialize(app = nil, opts = {}, &)
+      def initialize(app = nil, opts = {}, &block)
         @ssl_cert_store = nil
-        super
+        super(app, opts, &block)
       end
 
       def call(env)
@@ -194,7 +194,7 @@ module Faraday
       end
 
       def http_set(http, attr, value)
-        http.send(:"#{attr}=", value) if http.send(attr) != value
+        http.send("#{attr}=", value) if http.send(attr) != value
       end
 
       def ssl_verify_mode(ssl)
