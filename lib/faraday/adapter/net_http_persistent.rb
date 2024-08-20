@@ -56,6 +56,10 @@ module Faraday
         raise Faraday::TimeoutError, e
       end
 
+      def close
+        @cached_connection&.shutdown
+      end
+
       private
 
       def build_connection(env)
