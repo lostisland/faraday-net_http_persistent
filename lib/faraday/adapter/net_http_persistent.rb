@@ -179,6 +179,7 @@ module Faraday
 
       SSL_CONFIGURATIONS = {
         certificate: :client_cert,
+        ciphers: :ciphers,
         private_key: :client_key,
         ca_file: :ca_file,
         ssl_version: :version,
