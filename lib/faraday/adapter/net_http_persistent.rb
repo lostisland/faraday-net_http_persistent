@@ -194,7 +194,7 @@ module Faraday
         http_set(http, :cert_store, ssl_cert_store(ssl))
 
         SSL_CONFIGURATIONS
-          .select { |_, key| ssl[key] != nil }
+          .select { |_, key| !ssl[key].nil? }
           .each { |target, key| http_set(http, target, ssl[key]) }
       end
 
