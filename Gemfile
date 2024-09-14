@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "faraday", ">= 1"
+gem "faraday", ">= 2.5", "< 3"
 
 gem "multipart-parser", "~> 0.1.1"
 gem "rake", "~> 13.0"

@@ -179,13 +179,18 @@ module Faraday
 
       SSL_CONFIGURATIONS = {
         certificate: :client_cert,
-        ciphers: :ciphers,
         private_key: :client_key,
         ca_file: :ca_file,
         ssl_version: :version,
         min_version: :min_version,
         max_version: :max_version
-      }.freeze
+      }
+
+      if Gem::Version.new(Faraday::VERSION) >= Gem::Version.new('2.11.0')
+        SSL_CONFIGURATIONS[:ciphers] = :ciphers
+      end
+
+      SSL_CONFIGURATIONS.freeze
 
       def configure_ssl(http, ssl)
         return unless ssl
