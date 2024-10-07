@@ -186,7 +186,13 @@ module Faraday
         min_version: :min_version,
         max_version: :max_version,
         verify_hostname: :verify_hostname
-      }.freeze
+      }
+
+      if Gem::Version.new(Faraday::VERSION) >= Gem::Version.new("2.11.0")
+        SSL_CONFIGURATIONS[:ciphers] = :ciphers
+      end
+
+      SSL_CONFIGURATIONS.freeze
 
       def configure_ssl(http, ssl)
         return unless ssl
