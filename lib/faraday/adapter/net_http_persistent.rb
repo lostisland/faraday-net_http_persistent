@@ -187,7 +187,7 @@ module Faraday
         verify_hostname: :verify_hostname
       }
 
-      if Gem::Version.new(Faraday::VERSION) >= Gem::Version.new('2.11.0')
+      if Gem::Version.new(Faraday::VERSION) >= Gem::Version.new("2.11.0")
         SSL_CONFIGURATIONS[:ciphers] = :ciphers
       end
 
