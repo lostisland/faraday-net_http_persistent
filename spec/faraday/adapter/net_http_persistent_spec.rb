@@ -40,6 +40,26 @@ RSpec.describe Faraday::Adapter::NetHttpPersistent do
     expect(http.pool.size).to eq(5)
   end
 
+  it "allows to set name on initialize" do
+    url = URI("https://example.com")
+
+    adapter = described_class.new(nil, name: "MyCustomName")
+
+    http = adapter.send(:connection, url: url, request: {})
+
+    expect(http.name).to eq("MyCustomName")
+  end
+
+  it "defaults name to Faraday on initialize" do
+    url = URI("https://example.com")
+
+    adapter = described_class.new(nil)
+
+    http = adapter.send(:connection, url: url, request: {})
+
+    expect(http.name).to eq("Faraday")
+  end
+
   it "allows to set verify_hostname in SSL settings to false" do
     url = URI("https://example.com")
 
