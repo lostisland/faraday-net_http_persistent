@@ -37,8 +37,18 @@ RSpec.describe Faraday::Adapter::NetHttpPersistent do
 
     http = adapter.send(:connection, url: url, request: {})
 
-    # `pool` is only present in net_http_persistent >= 3.0
-    expect(http.pool.size).to eq(5) if http.respond_to?(:pool)
+    expect(http.pool.size).to eq(5)
+  end
+
+  it "allows to set verify_hostname in SSL settings to false" do
+    url = URI("https://example.com")
+
+    adapter = described_class.new(nil)
+
+    http = adapter.send(:connection, url: url, request: {})
+    adapter.send(:configure_ssl, http, verify_hostname: false)
+
+    expect(http.verify_hostname).to eq(false)
   end
 
   context "min_version" do
@@ -50,8 +60,7 @@ RSpec.describe Faraday::Adapter::NetHttpPersistent do
       http = adapter.send(:connection, url: url, request: {})
       adapter.send(:configure_ssl, http, min_version: :TLS1_2)
 
-      # `min_version` is only present in net_http_persistent >= 3.1 (UNRELEASED)
-      expect(http.min_version).to eq(:TLS1_2) if http.respond_to?(:min_version)
+      expect(http.min_version).to eq(:TLS1_2)
     end
   end
 end

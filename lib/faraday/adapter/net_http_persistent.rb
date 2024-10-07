@@ -183,7 +183,8 @@ module Faraday
         ca_file: :ca_file,
         ssl_version: :version,
         min_version: :min_version,
-        max_version: :max_version
+        max_version: :max_version,
+        verify_hostname: :verify_hostname
       }
 
       if Gem::Version.new(Faraday::VERSION) >= Gem::Version.new('2.11.0')
@@ -199,7 +200,7 @@ module Faraday
         http_set(http, :cert_store, ssl_cert_store(ssl))
 
         SSL_CONFIGURATIONS
-          .select { |_, key| ssl[key] }
+          .select { |_, key| !ssl[key].nil? }
           .each { |target, key| http_set(http, target, ssl[key]) }
       end
 
